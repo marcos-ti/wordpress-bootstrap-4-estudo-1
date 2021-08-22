@@ -11,4 +11,11 @@ function load_scripts(){
 // Hook (gancho) que chama a funcao
 add_action( 'wp_enqueue_scripts', 'load_scripts' );
 
+// Registrando os menus
+register_nav_menus( 
+	array(
+		'main_menu' => 'Main Menu',
+		'second_menu' => 'Second Menu'
+	)
+ );
 

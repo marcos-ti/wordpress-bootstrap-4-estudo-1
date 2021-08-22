@@ -12,12 +12,24 @@
 			<div class="container">
 				<div class="row">
 					<div class="social-media-icons col-xl-9 col-sm-7 col-6">Ícones Sociais</div>
-					<div class="search col-xl-3 col-sm-5 col-6 text-right">Pesquisa</div>
+					<div class="search col-xl-3 col-sm-5 col-6 text-end">Pesquisa</div>
 				</div>
 			</div>
 		</section>
 		<section class="menu-area">
-			<section class="logo">Logo</section>
-			<nav class="menu">Menu</nav>
+			<div class="container">
+				<div class="row">
+					<section class="logo col-md-2 col-12 text-center">Logo</section>
+					<!-- Bootstrap 4: text right = text-end -->
+					<nav class="menu col-md-10 text-end">
+						<?php 
+						wp_nav_menu( 
+							array(
+								'theme_location' => 'second_menu'
+								)
+					); ?>
+					</nav>
+				</div>
+			</div>
 		</section>
 	</header>
