@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="viewport" content="width=device-width">
 	<title>Curso WordPress</title>
 	<?php wp_head(); ?>
 </head>
@@ -12,7 +12,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="social-media-icons col-xl-9 col-sm-7 col-6">Ícones Sociais</div>
-					<div class="search col-xl-3 col-sm-5 col-6 text-end">Pesquisa</div>
+					<div class="search col-xl-3 col-sm-5 col-6 text-right">Pesquisa</div>			
 				</div>
 			</div>
 		</section>
@@ -20,15 +20,15 @@
 			<div class="container">
 				<div class="row">
 					<section class="logo col-md-2 col-12 text-center">Logo</section>
-					<!-- Bootstrap 4: text right = text-end -->
-					<nav class="menu col-md-10 text-end">
+					<nav class="main-menu col-md-10 text-right">
 						<?php 
 						wp_nav_menu( 
-							array(
-								'theme_location' => 'second_menu'
-								)
-					); ?>
-					</nav>
+							array( 
+								'theme_location' => 'my_main_menu' 
+							) 
+						); 
+						?>
+					</nav>					
 				</div>
 			</div>
 		</section>
