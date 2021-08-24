@@ -6,13 +6,28 @@ function load_scripts(){
 	wp_enqueue_style( 'bootstrap-css', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css', array(), '4.0.0', 'all' );
 	wp_enqueue_style( 'template', get_template_directory_uri() . '/css/template.css', array(), '1.0', 'all' );
 }
+//hook
 add_action( 'wp_enqueue_scripts', 'load_scripts' );
 
 
-// Registrando nossos menus
-register_nav_menus(
-	array(
-		'my_main_menu' => 'Main Menu',
-		'footer_menu' => 'Footer Menu'
-	)
-);
+
+
+// Funcao de configuracao
+function wpcurso_config() {
+	// Registrando nossos menus
+	register_nav_menus(
+		array(
+			'my_main_menu' => 'Main Menu',
+			'footer_menu' => 'Footer Menu'
+		)
+	);
+
+	$args = array(
+		'height' => 225,
+		'width'  => 1920
+	);
+	// Theme Support
+	add_theme_support( 'custom-header', $args );
+}
+//hook
+add_action( 'after_setup_theme', 'wpcurso_config', 0 );
