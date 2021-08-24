@@ -1,6 +1,6 @@
 <?php 
 
-// Carregando nossos scripts e folhas de estilos
+// Funcao de carregamento de CSS e JS
 function load_scripts(){
 	wp_enqueue_script( 'bootstrap-js', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js', array( 'jquery' ), '4.0.0', true );
 	wp_enqueue_style( 'bootstrap-css', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css', array(), '4.0.0', 'all' );
@@ -22,12 +22,16 @@ function wpcurso_config() {
 		)
 	);
 
-	$args = array(
+	// Theme Support
+	// Banner Header
+	add_theme_support( 'custom-header', array(
 		'height' => 225,
 		'width'  => 1920
-	);
-	// Theme Support
-	add_theme_support( 'custom-header', $args );
+	) );
+	// Thumbnails
+	add_theme_support( 'post-thumbnails' );
+	// Formatando Posts
+	add_theme_support( 'post-formats', array( 'video', 'image' ) );
 }
 //hook
 add_action( 'after_setup_theme', 'wpcurso_config', 0 );

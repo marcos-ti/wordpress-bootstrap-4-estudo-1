@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-
+<!-- Renderizando os banners  -->
 <img class="img-fluid" src="<?php header_image(); ?>" height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="" />
 
 	<div class="content-area">
@@ -26,14 +26,9 @@
 								while( have_posts() ): the_post();
 
 							?>
-
-							<article>
-								<h2><?php the_title(); ?></h2>
-								<p>Published in <?php echo get_the_date(); ?> by <?php the_author_posts_link(); ?></p>
-								<p>Categories: <?php the_category( ' ' ); ?></p>
-								<p><?php the_tags( 'Tags: ', ', ' ); ?></p>
-								<?php the_content(); ?>
-							</article>
+							
+							<!-- get_template_part = require // E formatando as rotas ( 'video', 'image' ) -->
+							<?php get_template_part( 'template-parts/content', get_post_format() ); ?>
 
 							<?php 
 								endwhile;

@@ -12,3 +12,10 @@
 .main-menu ul li, .footer-menu ul li{ 
 	display: inline; 
 }
+
+/* Formatando as Thumbs */
+/* Texto em volta da imagem */
+.wp-post-image{
+	float: left;
+	margin: 5px 15px 10px 0;
+}
