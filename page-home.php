@@ -12,7 +12,6 @@
 					<div class="row">
 						<div class="col-sm-4">
 							<div class="services-item">
-								<!-- Renderizando Widget -->
 								<?php 
 								if( is_active_sidebar( 'services-1' )){
 									dynamic_sidebar( 'services-1' );
@@ -23,7 +22,6 @@
 						</div>
 						<div class="col-sm-4">
 							<div class="services-item">
-								<!-- Renderizando Widget -->
 								<?php 
 								if( is_active_sidebar( 'services-2' )){
 									dynamic_sidebar( 'services-2' );
@@ -34,7 +32,6 @@
 						</div>
 						<div class="col-sm-4">
 							<div class="services-item">
-								<!-- Renderizando Widget -->
 								<?php 
 								if( is_active_sidebar( 'services-3' )){
 									dynamic_sidebar( 'services-3' );
@@ -51,25 +48,58 @@
 					<div class="row">
 						<?php get_sidebar( 'home' ); ?>
 						<div class="news col-md-8">
-							<?php 
-							// Se houver algum post
-							if( have_posts() ):
-								// Enquanto houver posts, mostre-os pra gente
-								while( have_posts() ): the_post();
+							<div class="container">
+								<h1>Latest News</h1>
+								<div class="row">
+									<?php 
 
-							?>
+									$featured = new WP_Query( 'post_type=post&posts_per_page=1&cat=3,6' );
 
-							<p>Conteúdo vindo do arquivo home.php</p>
+									if( $featured->have_posts() ):
+										while( $featured->have_posts() ): $featured->the_post();
+									?>
 
-							<?php 
-								endwhile;
-							else:
-							?>
+									<div class="col-12">
+										<?php get_template_part( 'template-parts/content', 'featured' ); ?>
+									</div>
 
-							 <p>There's nothing yet to be displayed...</p>
+									<?php
+										endwhile;
+										wp_reset_postdata();
+									endif;
 
-							<?php endif; ?>
 
+									// Segundo Loop
+									$args = array(
+										// Funçao Opcional
+										'post_type' => 'post',
+										// Posts por pagina
+										'posts_per_page' => 2,
+										//Categorias que não entram (Duplo _)
+										'category__not_in' => array( 5 ),
+										// Categorias que entram
+										'category__in' => array( 4, 6 ),
+										// Quantos itens ignorar no começo da lista
+										'offset' => 1
+									);
+
+									$secondary = new WP_Query( $args );
+
+									if( $secondary->have_posts() ):
+										while( $secondary->have_posts() ): $secondary->the_post();
+									?>
+
+									<div class="col-sm-6">
+										<?php get_template_part( 'template-parts/content', 'secondary' ); ?>
+									</div>
+
+									<?php
+										endwhile;
+										wp_reset_postdata();
+									endif;									
+									?>
+								</div>
+							</div>
 						</div>						
 					</div>
 				</div>				
