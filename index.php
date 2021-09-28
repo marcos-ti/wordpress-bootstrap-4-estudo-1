@@ -21,6 +21,17 @@
 
 							<?php 
 								endwhile;
+							?>
+							<!-- Paginacao -->
+								<div class="row">
+									<div class="pages text-left col-6">
+										<?php previous_posts_link("<< Newer post"); ?>
+									</div>
+									<div class="pages text-right col-6">
+									<?php next_posts_link("Older post >>"); ?>
+									</div>
+								</div>
+								<?php
 							else:
 							?>
 
