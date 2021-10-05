@@ -26,6 +26,9 @@ function wpcurso_config(){
 	add_theme_support( 'custom-header', $args );
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'post-formats', array( 'video', 'image' ) );
+	//Desde a versão wp 4.1 o Title vem pra cá!
+	add_theme_support( 'title-tag' );
+
 }
 add_action( 'after_setup_theme', 'wpcurso_config', 0 );
 
