@@ -1,5 +1,8 @@
 <?php 
 
+// Requerendo o arquivo do Customizer
+require get_template_directory() . '/inc/customizer.php';
+
 // Carregando nossos scripts e folhas de estilos
 function load_scripts(){
 	wp_enqueue_script( 'bootstrap-js', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js', array( 'jquery' ), '4.0.0', true );
@@ -26,9 +29,8 @@ function wpcurso_config(){
 	add_theme_support( 'custom-header', $args );
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'post-formats', array( 'video', 'image' ) );
-	//Desde a versão wp 4.1 o Title vem pra cá!
-	add_theme_support( 'title-tag' );
-
+	add_theme_support( 'title-tag');
+	add_theme_support( 'custom-logo', array('height'=>110, 'width'=>200));
 }
 add_action( 'after_setup_theme', 'wpcurso_config', 0 );
 
@@ -90,7 +92,6 @@ function wpcurso_sidebars(){
 			'after_title' => '</h2>'
 		)
 	);	
-	//Redes Sociais
 	register_sidebar(
 		array(
 			'name' => 'Social Icons',
@@ -101,7 +102,7 @@ function wpcurso_sidebars(){
 			'before_title' => '<h2 class="widget-title">',
 			'after_title' => '</h2>'
 		)
-	);			
+	);					
 }
 
 
